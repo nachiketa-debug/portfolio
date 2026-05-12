@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { experienceData } from '../../data/portfolioData';
 import { GraduationCap, Award, MapPin, Calendar, BookOpen, ExternalLink, Sparkles } from 'lucide-react';

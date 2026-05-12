@@ -138,9 +138,7 @@ const OrbitRing = ({ radius, color }: { radius: number; color: string }) => {
   }, [radius]);
 
   return (
-    <line geometry={geometry}>
-      <lineBasicMaterial color={color} transparent opacity={0.35} />
-    </line>
+    <primitive object={new THREE.Line(geometry, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.35 }))} />
   );
 };
 

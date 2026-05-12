@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Cpu, Code2, Globe } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Cpu, Globe } from 'lucide-react';
 import { experienceData } from '../../data/portfolioData';
 
 /* ── Types ── */
