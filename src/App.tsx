@@ -141,7 +141,7 @@ export default function App() {
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h1 className="architect-name text-[clamp(2.5rem,12vw,7rem)]">
-                            Nachiketa <span>Verma</span>
+                            {experienceData.name.split(' ')[0]} <span>{experienceData.name.split(' ')[1]}</span>
                         </h1>
                         
                         <div className="flex items-center justify-center mt-6">

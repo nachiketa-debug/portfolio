@@ -248,7 +248,6 @@ export const ProjectsSection = () => {
                 background: 'linear-gradient(180deg, #020617 0%, #0f172a 100%)',
                 width: '100%',
                 minHeight: '100vh',
-                padding: '8rem 0',
                 position: 'relative',
                 overflow: 'hidden',
                 display: 'flex',
