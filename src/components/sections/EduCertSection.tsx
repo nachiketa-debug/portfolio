@@ -140,7 +140,7 @@ export const EduCertSection = () => {
             }} />
 
             <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 1 }}>
-                
+
                 {/* Header */}
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <div style={{
@@ -206,7 +206,7 @@ export const EduCertSection = () => {
                         {experienceData.certifications.map((cert, i) => (
                             <CertificationItem key={i} cert={cert} index={i} />
                         ))}
-                        
+
                         {/* Learning Note */}
                         <div style={{
                             marginTop: '2rem',

@@ -247,13 +247,12 @@ export const ProjectsSection = () => {
             style={{
                 background: 'linear-gradient(180deg, #020617 0%, #0f172a 100%)',
                 width: '100%',
-                minHeight: '100vh',
                 position: 'relative',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                padding: 'clamp(3rem, 8vw, 8rem) 0'
+                padding: 'clamp(3rem, 6vw, 6rem) 0'
             }}
         >
             <style>{`

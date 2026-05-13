@@ -272,13 +272,12 @@ export const SkillsSection = () => {
       ref={sectionRef}
       style={{
         background: "linear-gradient(160deg,#060614 0%,#07050f 50%,#0a0618 100%)",
-        padding: "4rem 0 2.5rem",
+        padding: "clamp(2rem, 6vw, 4rem) 0 2.5rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        minHeight: "100vh",
         width: "100%",
       }}
     >
@@ -321,7 +320,7 @@ export const SkillsSection = () => {
             height: 28px !important;
           }
           .sk-canvas-container {
-            height: 450px !important;
+            height: 320px !important;
           }
         }
       `}</style>
@@ -355,11 +354,11 @@ export const SkillsSection = () => {
       </div>
 
       {/* 3D Canvas */}
-      <div className="sk-canvas-container" style={{width:"100%",height:"clamp(500px, 80vh, 900px)",position:"relative",zIndex:4}}>
+      <div className="sk-canvas-container" style={{width:"100%",height:"clamp(320px, 60vw, 700px)",position:"relative",zIndex:4,background:"transparent"}}>
         <Canvas
           camera={{ position: [0, 8, 12], fov: 40 }}
           style={{ background: "transparent" }}
-          gl={{ antialias: true, alpha: true }}
+          gl={{ antialias: true, alpha: true, clearColor: [0, 0, 0, 0] } as any}
         >
           <Suspense fallback={null}>
             <UniverseScene />
