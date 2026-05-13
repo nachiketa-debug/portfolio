@@ -9,7 +9,7 @@ export const EducationCard = () => {
     const mainEducation = experienceData.education[0];
 
     return (
-        <GlassCard position={[-6.5, -3.5, 0]} width="w-[30rem]">
+        <GlassCard position={[-6.5, -3.7, 0]} width="w-[30rem]">
             <div onClick={scrollToEducation} className="cursor-pointer">
                 <div className="text-xl opacity-50 mb-5 uppercase tracking-wider">Education</div>
                 <div className="text-3xl font-bold mb-3">{mainEducation.field}</div>

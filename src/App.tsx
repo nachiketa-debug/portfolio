@@ -72,21 +72,35 @@ export default function App() {
             {/* Hero 3D Section */}
             <div id="hero" className="w-full h-screen relative bg-[#0a0a0f]">
                 {/* Top Navigation */}
-                <nav className="absolute top-0 w-full px-4 py-3 md:px-8 md:py-6 flex justify-between items-center z-50 text-white pointer-events-none">
-                    {/* Left - Greeting and Date */}
-                    <div className="flex flex-col pointer-events-auto">
-                        <div className="text-xs md:text-sm opacity-50 font-medium leading-tight">{greeting || 'Good morning'}</div>
-                        <div className="text-sm md:text-base font-semibold leading-tight">{currentDate || '13 may'}</div>
+                <nav className="absolute top-0 w-full px-4 py-4 md:px-10 md:py-5 flex justify-between items-center z-50 text-white pointer-events-none">
+                    {/* Left - Greeting pill (mobile only) */}
+                    <div
+                        className="md:hidden pointer-events-auto flex items-center gap-2 px-3 py-1.5 rounded-full"
+                        style={{
+                            background: 'rgba(255,255,255,0.06)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(8px)',
+                        }}
+                    >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ boxShadow: '0 0 6px #34d399' }} />
+                        <span className="text-xs font-medium opacity-70">{greeting || 'Good morning'}</span>
+                        <span className="text-xs font-semibold opacity-90">{currentDate || '13 may'}</span>
                     </div>
 
-                    {/* Right - Resume Button and Time */}
-                    <div className="flex items-center gap-3 pointer-events-auto">
-                        <span className="text-xs opacity-50 font-medium tabular-nums">{currentTime || '11:58'}</span>
+                    {/* Desktop spacer so Resume stays right */}
+                    <div className="hidden md:block" />
+
+                    {/* Right - Resume button (always visible) */}
+                    <div className="pointer-events-auto flex items-center gap-2 md:gap-3 ml-auto md:ml-0">
                         <button
                             onClick={handleDownloadResume}
-                            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg transition-all hover:scale-105 text-xs md:text-sm font-semibold"
+                            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 text-white rounded-full shadow-lg transition-all hover:scale-105 text-xs md:text-sm font-semibold"
+                            style={{
+                                background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+                                boxShadow: '0 4px 15px rgba(99,102,241,0.35)',
+                            }}
                         >
-                            <Download size={12} className="md:w-4 md:h-4" />
+                            <Download size={12} />
                             <span>Resume</span>
                         </button>
                     </div>
