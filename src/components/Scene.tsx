@@ -13,17 +13,24 @@ import { HeroImage } from './HeroImage';
 export const Scene = () => {
     const texture = useTexture("/hero.png");
     const { viewport } = useThree();
-    const isMobile = viewport.width < 7.5; // Threshold for mobile/tablet portrait
+    const isMobile = viewport.width < 7.5;
     const groupRef = useRef<THREE.Group>(null);
 
     useFrame((state) => {
         if (!groupRef.current) return;
-        const { x, y } = state.mouse;
-        // Subtle parallax follow
-        groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, x * 0.5, 0.05);
-        groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, (y * 0.5) + (isMobile ? -0.5 : 0), 0.05);
-        groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, x * 0.05, 0.05);
-        groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -y * 0.05, 0.05);
+        if (isMobile) {
+            // On mobile: keep image locked at center, no parallax drift
+            groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, 0, 0.08);
+            groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, 0, 0.08);
+            groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, 0, 0.08);
+            groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, 0, 0.08);
+        } else {
+            const { x, y } = state.mouse;
+            groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, x * 0.5, 0.05);
+            groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, y * 0.5, 0.05);
+            groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, x * 0.05, 0.05);
+            groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -y * 0.05, 0.05);
+        }
     });
 
     return (
@@ -32,23 +39,20 @@ export const Scene = () => {
             <ambientLight intensity={1.2} />
             <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.5} />
 
-            {/* Only show floating cards on Desktop */}
+            {/* Floating cards - desktop only (cards overlap image on mobile even at small scale) */}
             {!isMobile && (
                 <Float speed={4} rotationIntensity={0.3} floatIntensity={0.5}>
-                    {/* Left Side Cards - moved further left */}
                     <ProjectsCard />
                     <AchievementsCard />
                     <EducationCard />
-
-                    {/* Right Side Cards */}
                     <SkillsCard />
                     <ContactCard />
                 </Float>
             )}
 
-            {/* Image with its own unique animation */}
-            <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-                <group ref={groupRef} scale={isMobile ? 0.85 : 1}>
+            {/* Image centered, no parallax on mobile */}
+            <Float speed={2} rotationIntensity={0.15} floatIntensity={0.4}>
+                <group ref={groupRef} scale={isMobile ? 1.0 : 1} position={[0, 0, 0]}>
                     <HeroImage texture={texture} />
                 </group>
             </Float>

@@ -72,25 +72,23 @@ export default function App() {
             {/* Hero 3D Section */}
             <div id="hero" className="w-full h-screen relative bg-[#0a0a0f]">
                 {/* Top Navigation */}
-                {/* Top Navigation */}
-                <nav className="absolute top-0 w-full p-6 md:p-8 flex justify-between items-start z-50 text-white pointer-events-none">
-                    {/* Left/Center - Greeting and Date */}
-                    {/* Mobile: Top Left, Desktop: Centered via absolute positioning trick or just balanced flex */}
-                    <div className="flex flex-col items-start md:absolute md:left-[30%] md:items-start text-left md:text-left pointer-events-auto">
-                        <div className="text-lg md:text-xl opacity-60 font-medium">{greeting || 'Good morning'}</div>
-                        <div className="text-lg md:text-xl font-bold md:font-medium">{currentDate || '6 feb'}</div>
+                <nav className="absolute top-0 w-full px-4 py-3 md:px-8 md:py-6 flex justify-between items-center z-50 text-white pointer-events-none">
+                    {/* Left - Greeting and Date */}
+                    <div className="flex flex-col pointer-events-auto">
+                        <div className="text-xs md:text-sm opacity-50 font-medium leading-tight">{greeting || 'Good morning'}</div>
+                        <div className="text-sm md:text-base font-semibold leading-tight">{currentDate || '13 may'}</div>
                     </div>
 
                     {/* Right - Resume Button and Time */}
-                    <div className="flex flex-col items-end gap-2 md:gap-3 pointer-events-auto ml-auto">
+                    <div className="flex items-center gap-3 pointer-events-auto">
+                        <span className="text-xs opacity-50 font-medium tabular-nums">{currentTime || '11:58'}</span>
                         <button
                             onClick={handleDownloadResume}
-                            className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg transition-all hover:scale-105 text-xs md:text-sm font-medium"
+                            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg transition-all hover:scale-105 text-xs md:text-sm font-semibold"
                         >
-                            <Download size={14} className="md:w-4 md:h-4" />
+                            <Download size={12} className="md:w-4 md:h-4" />
                             <span>Resume</span>
                         </button>
-                        <span className="text-xs md:text-sm opacity-60 font-medium">{currentTime || '11:30'}</span>
                     </div>
                 </nav>
 
