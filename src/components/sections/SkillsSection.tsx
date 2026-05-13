@@ -193,7 +193,7 @@ const Planet = ({
       {/* HTML icon + tooltip overlay */}
       <Html center distanceFactor={7} zIndexRange={[0, 100]} style={{ pointerEvents: "none" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-          <div style={{
+          <div className="sk-planet-icon" style={{
             width: 34, height: 34,
             borderRadius: "50%",
             background: "rgba(10,8,30,0.75)",
@@ -207,7 +207,7 @@ const Planet = ({
               src={skill.icon}
               alt={skill.name}
               style={{
-                width: 20, height: 20, objectFit: "contain",
+                width: "60%", height: "60%", objectFit: "contain",
                 filter: skill.name === "Next.js" ? "invert(1)" : "none",
               }}
               draggable={false}
@@ -315,6 +315,15 @@ export const SkillsSection = () => {
           color:#a78bfa;font-size:11px;font-weight:700;
           letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;
         }
+        @media (max-width: 768px) {
+          .sk-planet-icon {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .sk-canvas-container {
+            height: 450px !important;
+          }
+        }
       `}</style>
 
       {/* Nebula blobs */}
@@ -346,7 +355,7 @@ export const SkillsSection = () => {
       </div>
 
       {/* 3D Canvas */}
-      <div style={{width:"100%",height:"clamp(600px, 85vh, 900px)",position:"relative",zIndex:4}}>
+      <div className="sk-canvas-container" style={{width:"100%",height:"clamp(500px, 80vh, 900px)",position:"relative",zIndex:4}}>
         <Canvas
           camera={{ position: [0, 8, 12], fov: 40 }}
           style={{ background: "transparent" }}

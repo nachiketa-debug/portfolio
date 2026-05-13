@@ -1,5 +1,8 @@
+
+import { useRef } from "react";
 import { Float, Environment, useTexture } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
+import * as THREE from 'three';
 import { ProjectsCard } from './ProjectsCard';
 import { AchievementsCard } from './AchievementsCard';
 import { EducationCard } from './EducationCard';
@@ -11,6 +14,17 @@ export const Scene = () => {
     const texture = useTexture("/hero.png");
     const { viewport } = useThree();
     const isMobile = viewport.width < 7.5; // Threshold for mobile/tablet portrait
+    const groupRef = useRef<THREE.Group>(null);
+
+    useFrame((state) => {
+        if (!groupRef.current) return;
+        const { x, y } = state.mouse;
+        // Subtle parallax follow
+        groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, x * 0.5, 0.05);
+        groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, (y * 0.5) + (isMobile ? -0.5 : 0), 0.05);
+        groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, x * 0.05, 0.05);
+        groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -y * 0.05, 0.05);
+    });
 
     return (
         <>
@@ -33,8 +47,8 @@ export const Scene = () => {
             )}
 
             {/* Image with its own unique animation */}
-            <Float speed={2.5} rotationIntensity={isMobile ? 0.05 : 0.15} floatIntensity={isMobile ? 0.2 : 0.35}>
-                <group scale={isMobile ? 0.85 : 1} position={[0, isMobile ? -0.5 : 0, 0]}>
+            <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
+                <group ref={groupRef} scale={isMobile ? 0.85 : 1}>
                     <HeroImage texture={texture} />
                 </group>
             </Float>
@@ -42,7 +56,7 @@ export const Scene = () => {
             {/* Subtle Floor */}
             <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -4, 0]}>
                 <planeGeometry args={[40, 40]} />
-                <meshStandardMaterial color="#d4d4d4" roughness={0.8} metalness={0.1} />
+                <meshStandardMaterial color="#0a0a14" roughness={0.9} metalness={0.1} />
             </mesh>
         </>
     );

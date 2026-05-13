@@ -32,10 +32,10 @@ const ProjectCard = ({ project, direction }: { project: Project; direction: numb
                 backdropFilter: 'blur(10px)',
                 borderRadius: '2rem',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                padding: 'clamp(1.5rem, 5vw, 4rem)',
+                padding: 'clamp(1.25rem, 4vw, 4rem)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-                gap: 'clamp(1.5rem, 4vw, 3rem)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+                gap: 'clamp(1.25rem, 4vw, 3rem)',
                 boxShadow: '0 40px 100px rgba(0,0,0,0.4)',
                 position: 'relative',
                 overflow: 'hidden'
@@ -253,7 +253,8 @@ export const ProjectsSection = () => {
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                padding: 'clamp(4rem, 10vw, 8rem) 0'
             }}
         >
             <style>{`
@@ -270,15 +271,26 @@ export const ProjectsSection = () => {
                     20%, 100% { left: 200%; }
                 }
                 @media (max-width: 768px) {
+                    .proj-carousel-inner {
+                        flex-direction: column !important;
+                    }
                     .proj-nav-container { 
-                        position: static !important; 
-                        margin-top: 2rem;
+                        position: relative !important; 
+                        order: 2;
+                        margin-top: 3rem;
                         justify-content: center !important;
-                        gap: 2rem;
+                        gap: 3rem;
+                        width: 100% !important;
+                        left: 0 !important;
+                        right: 0 !important;
+                        transform: none !important;
+                    }
+                    .proj-card-wrapper {
+                        order: 1;
                     }
                     .proj-nav-btn {
-                        width: 50px !important;
-                        height: 50px !important;
+                        width: 55px !important;
+                        height: 55px !important;
                     }
                 }
             `}</style>
@@ -320,11 +332,12 @@ export const ProjectsSection = () => {
 
             {/* Carousel Container */}
             <div 
+                className="proj-carousel-inner"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 style={{
                     width: '100%',
-                    padding: '0 2rem',
+                    padding: '0 clamp(1rem, 5vw, 2rem)',
                     position: 'relative',
                     display: 'flex',
                     alignItems: 'center',
@@ -392,7 +405,7 @@ export const ProjectsSection = () => {
                 </div>
 
                 {/* Card Display */}
-                <div style={{ width: '100%', overflow: 'hidden' }}>
+                <div className="proj-card-wrapper" style={{ width: '100%', maxWidth: '1000px', overflow: 'hidden' }}>
                     <AnimatePresence mode="wait" custom={direction}>
                         <ProjectCard 
                             key={currentIndex} 

@@ -9,6 +9,7 @@ import { ProjectsSection } from './components/sections/ProjectsSection';
 import { SkillsSection } from './components/sections/SkillsSection';
 import { EduCertSection } from './components/sections/EduCertSection';
 import { ContactSection } from './components/sections/ContactSection';
+import { motion } from 'framer-motion';
 import { experienceData } from './data/portfolioData';
 
 export default function App() {
@@ -61,10 +62,10 @@ export default function App() {
     return (
         <div className="w-full h-full overflow-y-auto overflow-x-hidden">
             {/* Hero 3D Section */}
-            <div id="hero" className="w-full h-screen relative bg-gray-100">
+            <div id="hero" className="w-full h-screen relative bg-[#0a0a0f]">
                 {/* Top Navigation */}
                 {/* Top Navigation */}
-                <nav className="absolute top-0 w-full p-6 md:p-8 flex justify-between items-start z-50 text-gray-800 pointer-events-none">
+                <nav className="absolute top-0 w-full p-6 md:p-8 flex justify-between items-start z-50 text-white pointer-events-none">
                     {/* Left/Center - Greeting and Date */}
                     {/* Mobile: Top Left, Desktop: Centered via absolute positioning trick or just balanced flex */}
                     <div className="flex flex-col items-start md:absolute md:left-[30%] md:items-start text-left md:text-left pointer-events-auto">
@@ -86,9 +87,73 @@ export default function App() {
                 </nav>
 
                 {/* Name Display - Adjusted for Mobile Visibility */}
-                <div className="absolute bottom-12 md:bottom-24 left-0 right-0 z-40 text-center text-gray-800 pointer-events-none px-6">
-                    <h1 className="text-4xl md:text-7xl font-bold mb-2 tracking-tight leading-tight drop-shadow-sm">{experienceData.name}</h1>
-                    <p className="text-base md:text-2xl font-light opacity-70 tracking-wide uppercase">Full Stack Developer</p>
+                <div className="absolute bottom-10 md:bottom-16 left-0 right-0 z-40 text-center pointer-events-none px-6">
+                    <style>{`
+                        @keyframes name-shimmer {
+                            0% { background-position: -200% center; }
+                            100% { background-position: 200% center; }
+                        }
+                        .architect-name {
+                            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                            font-weight: 950;
+                            letter-spacing: -0.04em;
+                            line-height: 0.9;
+                            margin-bottom: 0.5rem;
+                            color: #ffffff;
+                        }
+                        .architect-name span {
+                            display: block;
+                            background: linear-gradient(
+                                90deg, 
+                                #ffffff 0%, 
+                                #818cf8 25%, 
+                                #c084fc 50%, 
+                                #818cf8 75%, 
+                                #ffffff 100%
+                            );
+                            background-size: 200% auto;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            animation: name-shimmer 6s linear infinite;
+                        }
+                        .tech-tag {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 1rem;
+                            padding: 10px 24px;
+                            background: rgba(255, 255, 255, 0.03);
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                            border-radius: 4px;
+                            backdrop-filter: blur(12px);
+                        }
+                        .tech-tag-text {
+                            color: #94a3b8;
+                            font-weight: 700;
+                            letter-spacing: 0.4em;
+                            font-size: 0.7rem;
+                            text-transform: uppercase;
+                        }
+                    `}</style>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <h1 className="architect-name text-[clamp(2.5rem,12vw,7rem)]">
+                            Nachiketa <span>Verma</span>
+                        </h1>
+                        
+                        <div className="flex items-center justify-center mt-6">
+                            <div className="tech-tag">
+                                <span className="tech-tag-text">Full Stack Developer</span>
+                                <div className="flex gap-1">
+                                    <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" />
+                                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
 
                 {/* 3D Canvas */}
@@ -103,7 +168,7 @@ export default function App() {
                 <div className="absolute bottom-0 left-0 w-full pointer-events-none z-10">
                     <svg viewBox="0 0 1440 320" className="w-full block" preserveAspectRatio="none" style={{ display: 'block' }}>
                         <path
-                            fill="#e5e7eb"
+                            fill="#020617"
                             fillOpacity="1"
                             d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
                         />
@@ -112,7 +177,7 @@ export default function App() {
             </div>
 
             {/* Scrollable Content Sections */}
-            <div className="w-full bg-gray-100">
+            <div className="w-full bg-[#020617]">
                 <SkillsSection />
                 <ExperienceSection />
                 <ProjectsSection />

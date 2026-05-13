@@ -89,7 +89,7 @@ export const ExperienceSection = () => {
                     70%      { box-shadow:0 0 0 8px rgba(16,185,129,0); }
                 }
                 @media (max-width: 1024px) {
-                    .exp-grid { grid-template-columns: 1fr !export; }
+                    .exp-grid { grid-template-columns: 1fr !important; }
                     .exp-meta-side { margin-top: 2rem; }
                 }
                 @keyframes exp-slide-in {

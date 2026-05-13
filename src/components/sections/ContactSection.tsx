@@ -63,7 +63,7 @@ export const ContactSection = () => {
                     backdrop-filter: blur(20px);
                     border: 1px solid rgba(255, 255, 255, 0.08);
                     border-radius: 2rem;
-                    padding: 3rem;
+                    padding: clamp(1.25rem, 5vw, 3rem);
                     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
                 }
                 .contact-btn {
@@ -102,7 +102,9 @@ export const ContactSection = () => {
                     onMouseLeave={onMouseLeave}
                     className="contact-glass"
                     style={{ 
-                        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem',
+                        display: 'grid', 
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', 
+                        gap: 'clamp(2rem, 5vw, 3rem)',
                         opacity: vis ? 1 : 0, transform: vis ? 'translateY(0)' : 'translateY(40px)',
                         transition: 'opacity 0.8s ease, transform 0.8s ease'
                     }}
@@ -143,7 +145,7 @@ export const ContactSection = () => {
                     </div>
 
                     {/* Right Side: Quick Message CTA */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(99, 102, 241, 0.05)', borderRadius: '1.5rem', border: '1px solid rgba(99, 102, 241, 0.1)' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(1.25rem, 5vw, 2rem)', background: 'rgba(99, 102, 241, 0.05)', borderRadius: '1.5rem', border: '1px solid rgba(99, 102, 241, 0.1)' }}>
                         <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f8fafc', marginBottom: '1rem' }}>Quick Message</h3>
                         <p style={{ color: '#94a3b8', lineHeight: 1.6, marginBottom: '2rem' }}>
                             I'm currently available for freelance work or full-time positions. If you have a question or just want to say hi, my inbox is always open!

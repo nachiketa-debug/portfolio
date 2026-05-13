@@ -180,8 +180,8 @@ export const EduCertSection = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                    gap: '4rem',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
+                    gap: 'clamp(2rem, 5vw, 4rem)',
                     alignItems: 'start'
                 }}>
                     {/* Education Column */}
