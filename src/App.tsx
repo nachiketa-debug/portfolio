@@ -17,7 +17,6 @@ export default function App() {
     const scrollContainerRef = reactRef<HTMLDivElement>(null);
     const [greeting, setGreeting] = useState('');
     const [currentDate, setCurrentDate] = useState('');
-    const [currentTime, setCurrentTime] = useState('');
 
     useEffect(() => {
         const updateDateTime = () => {
@@ -41,9 +40,6 @@ export default function App() {
             const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const month = monthNames[now.getMonth()];
             setCurrentDate(`${day} ${month.toLowerCase()}`);
-
-            const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-            setCurrentTime(timeString);
         };
 
         updateDateTime();
