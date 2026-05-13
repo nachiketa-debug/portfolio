@@ -23,7 +23,7 @@ export const CustomLoader = () => {
                 position: 'fixed',
                 inset: 0,
                 zIndex: 9999,
-                background: '#ffffff',
+                background: '#020617',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -100,10 +100,10 @@ export const CustomLoader = () => {
                         gap: 2,
                     }}
                 >
-                    <span style={{ color: '#1e293b', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                    <span style={{ color: '#f8fafc', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1.4 }}>
                         NACHIKETA
                     </span>
-                    <span style={{ color: '#1e293b', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1.4 }}>
+                    <span style={{ color: '#f8fafc', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1.4 }}>
                         VERMA
                     </span>
                 </div>
@@ -121,7 +121,7 @@ export const CustomLoader = () => {
                     }}
                 />
             </div>
-            <span style={{ color: 'rgba(0,0,0,0.35)', fontSize: 11, marginTop: 10, letterSpacing: '0.1em' }}>
+            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, marginTop: 10, letterSpacing: '0.1em' }}>
                 {Math.round(progress)}%
             </span>
         </div>

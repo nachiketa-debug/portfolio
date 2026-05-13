@@ -253,7 +253,7 @@ export const ProjectsSection = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                padding: 'clamp(4rem, 10vw, 8rem) 0'
+                padding: 'clamp(3rem, 8vw, 8rem) 0'
             }}
         >
             <style>{`
@@ -352,7 +352,7 @@ export const ProjectsSection = () => {
                         maxWidth: '1200px',
                         display: 'flex',
                         justifyContent: 'space-between',
-                        padding: '0 1rem',
+                        padding: 'clamp(3rem, 8vw, 8rem) 0',
                         zIndex: 10,
                         pointerEvents: 'none'
                     }}

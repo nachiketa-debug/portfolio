@@ -109,7 +109,7 @@ export const EduCertSection = () => {
             id="education-certifications"
             style={{
                 background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)',
-                padding: '8rem 0',
+                padding: 'clamp(3rem, 8vw, 8rem) 0',
                 width: '100%',
                 position: 'relative',
                 overflow: 'hidden'

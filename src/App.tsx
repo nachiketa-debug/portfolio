@@ -10,9 +10,11 @@ import { SkillsSection } from './components/sections/SkillsSection';
 import { EduCertSection } from './components/sections/EduCertSection';
 import { ContactSection } from './components/sections/ContactSection';
 import { motion } from 'framer-motion';
+import { useRef as reactRef } from 'react';
 import { experienceData } from './data/portfolioData';
 
 export default function App() {
+    const scrollContainerRef = reactRef<HTMLDivElement>(null);
     const [greeting, setGreeting] = useState('');
     const [currentDate, setCurrentDate] = useState('');
     const [currentTime, setCurrentTime] = useState('');
@@ -50,6 +52,12 @@ export default function App() {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTop = 0;
+        }
+    }, []);
+
     const handleDownloadResume = () => {
         const link = document.createElement('a');
         link.href = '/resume.pdf';
@@ -60,7 +68,7 @@ export default function App() {
     };
 
     return (
-        <div className="w-full h-full overflow-y-auto overflow-x-hidden">
+        <div ref={scrollContainerRef} className="w-full h-full overflow-y-auto overflow-x-hidden">
             {/* Hero 3D Section */}
             <div id="hero" className="w-full h-screen relative bg-[#0a0a0f]">
                 {/* Top Navigation */}
